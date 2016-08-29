@@ -137,6 +137,34 @@ class CustomerDAO{
 		}
 		return $messagee;
 	}
+
+	public function updateCustomer(CustomerDTO $newCustomer){
+		$id=$_POST['documentoIdentidad'];
+		$this->sql="UPDATE personas SET documentoidentidad=?, nombres=?, apellidos=?, correoe=?, password=?, idrol=?, fechacreacion=?, estadopersona=?
+		WHERE documentoidentidad=$id";
+		try {
+			$query = $this->conexion->prepare($this->sql);
+			$query->bindParam(1, $newCustomer->get("documentoIdentidad"));
+			$query->bindParam(2, $newCustomer->get("nombres"));
+			$query->bindParam(3, $newCustomer->get("apellidos"));
+			$query->bindParam(4, $newCustomer->get("correoe"));
+			$query->bindParam(5, $newCustomer->get("password"));
+			$query->bindParam(6, $newCustomer->get("idRol"));
+			$query->bindParam(7, $newCustomer->get("fechaCreacion"));
+			$query->bindParam(8,$newCustomer->get("estadoPersona"));
+
+					
+			
+			if ($query->execute()) {
+				$this->outputMessage = 'ok';
+			}else{
+				$this->outputMessage = 'error en registro';
+			}
+		} catch (PDOException $e) {
+			$this->outputMessage='error en conexion'.$e->getMessage();
+		}
+		return $this->outputMessage;
+	}
 }
 
 ?>
