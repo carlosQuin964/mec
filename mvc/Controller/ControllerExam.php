@@ -13,7 +13,17 @@ if (isset($_POST['addExam']) && $_POST['addExam']!=null) {
 	$newExam->set("fechafinal", $_POST['fechafinal']);
 
 	$mensaje=$ExamDAO->addExam($newExam);
-	header('location:../view/home.php?exam='.$mensaje);
+	
+
+	header("Location:../view/home.php?registro=".$mensaje);
+}
+
+if (isset($_POST['deleteExam']) && $_POST['deleteExam']!=null) {
+	$idcurso = $_POST['idexamen'];
+	$message=$ExamDAO->deleteExam($idexamen);
+	header("location:../view/viewCourses.php?accion=".$message);
+	
+
 }
 
 

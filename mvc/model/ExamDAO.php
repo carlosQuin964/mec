@@ -58,6 +58,25 @@ public function readExam(){
 	return $allExam;
 }
 
+public function deleteExam($idexamen){
+		$this->sql="DELETE FROM examenes WHERE idexamen =?";
+		try {
+			$query = $this->conexion->prepare($this->sql);
+			$query->bindParam(1, $examenes);
+
+
+			if ($query->execute()) {
+			
+				$this->messagee="very good";
+			}else{
+				$this->messagee="error in the consulte";
+					}	
+		} catch (PDOException $e) {
+			$this->messagee="error".$e->getMessage();
+		}
+		return $messagee;
+	}
+
 
 }
 

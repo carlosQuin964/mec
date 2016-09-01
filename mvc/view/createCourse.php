@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<?php 
+
+require_once'../model/Login.php';
+//require'../model/connectionLogin.php';
+session_start();
+
+if (isset($_SESSION['nombres'])){
+
+    ?>
 	<meta charset="UTF-8">
 	<title>CreateCourse</title>
 	<link rel="stylesheet" href="css/bootstrap.css">
@@ -12,6 +21,7 @@
 	
 	<script src="js/jquery-1.11.3.min.js"></script>
 	<script src="js/bootstrap.js"></script>
+	<style>.baj{margin-top: 69px; margin-left: 40px; }.sub{margin-top: -130px;}</style>
 	<script>
 		$().ready(function(){
 			$('#_menu li:nth-child(1)').addClass('active');
@@ -24,6 +34,7 @@
 <body>
 <?php include 'includes/menu.php' ?>
 <div class="container despega">
+
 	
 <form action="../Controller/serviceCourse.php" method="post">
 
@@ -48,3 +59,11 @@
 	
 </body>
 </html>
+
+<?php
+        }else{
+
+            header("Location: ./../../login.php");
+
+        }
+        ?>

@@ -5,10 +5,9 @@
     <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
     <title></title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    
   
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    
 </head>
 <body>
 
@@ -28,8 +27,9 @@
           <li><a href="viewCourses.php">view courses</a></li>
           <li><a href="createExam.php">Create exam</a></li>
           <li><a href="viewExam.php">view exam</a></li>
-          <li><a href="#">Create Matter</a></li>
-          <li><a href="#">View Matter</a></li>
+          <li><a href="createMatters.php">Create subject</a></li>
+          <li><a href="viewMatter.php">View subject</a></li>
+          <li><a href="Question.php">add Question</a></li>
         </ul></div></div>
         </div>
 </header>
@@ -107,15 +107,15 @@
 
 
            <li class="dropdown last">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Matter <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-education"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">subject<span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-education"></span></a>
             <ul class="dropdown-menu forAnimate" role="menu">
-          <li><a href="createCourse.php">CreateMatter</a></li>
-          <li><a href="registration.php">view Matter</a></li>
-          <li><a href="#">modify Matter</a></li>
+          <li><a href="createMatters.php">Createsubject</a></li>
+          <li><a href="viewMatter.php">view subject</a></li>
+          <li><a href="#">modify subject</a></li>
          
          
           <li class="divider"></li>
-              <li><a href="#">delete Matter</a></li>
+              <li><a href="#">delete subject</a></li>
             </ul>
           </li>
 

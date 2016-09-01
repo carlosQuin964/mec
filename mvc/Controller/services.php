@@ -15,19 +15,8 @@ if (isset($_POST['registrarCliente']) && $_POST['registrarCliente']!=null ) {
 
 
 	$message=$CustomerDAO->registrarCliente($newCustomer); 
-	if($message == 'ok'){
-		echo '<script>alert("
-you have successfully registered you can now login");</script>';
-        echo '<script>window.location="../../login.php"; </script>';  
 	
-	
-
-	}else{
-		echo '<script>alert("you not can registration");</script>';
-		echo '<script>window.location="./../../registration.php";</script>';
-         
-		    
-    }
+	header("Location:../view/home.php?registro=".$mensaje);
 	}
 
 

@@ -58,6 +58,26 @@ public function createMatter(matterDTO $new){
 }
 
 
+public function deleteSubject($idmaterias){
+		$this->sql="DELETE FROM materias WHERE idmaterias =?";
+		try {
+			$query = $this->conexion->prepare($this->sql);
+			$query->bindParam(1, $materias);
+
+
+			if ($query->execute()) {
+			
+				$this->messagee="very good";
+			}else{
+				$this->messagee="error in the consulte";
+					}	
+		} catch (PDOException $e) {
+			$this->messagee="error".$e->getMessage();
+		}
+		return $messagee;
+	}
+
+
 }
 
 

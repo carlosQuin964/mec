@@ -41,7 +41,16 @@ class Login {
 
                 $fila = $query->fetch();
                 $_SESSION['nombres'] = $fila['nombres'];
-               
+                $_SESSION['documentoidentidad'] = $fila['documentoidentidad'];
+                $_SESSION['apellidos'] = $fila['apellidos'];
+                $_SESSION['correoe'] = $fila['correoe'];
+                $_SESSION['password'] = $fila['password'];
+                $_SESSION['idrol'] = $fila['idrol'];
+                $_SESSION['fechacreacion'] = $fila['fechacreacion'];
+                $_SESSION['estadopersona'] = $fila['estadopersona'];
+                
+                
+
                 return TRUE;
             }
         } catch (PDOException $e) {

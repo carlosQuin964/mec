@@ -1,3 +1,13 @@
+<?php 
+
+require_once'../model/Login.php';
+//require'../model/connectionLogin.php';
+session_start();
+
+if (isset($_SESSION['nombres'])){
+
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +28,7 @@
 	
 	<script src="js/menuA.js"></script>
 	<script src="js/filtro.js"></script>
+
 
 	<?php 
 	 include'../model/CustomerDAO.php';
@@ -90,3 +101,10 @@
 
 
 </html>
+<?php
+        }else{
+
+            header("Location: ./../../login.php");
+
+        }
+        ?>

@@ -14,14 +14,7 @@ if (isset($_POST['CreateCourse']) && $_POST['CreateCourse']!=null) {
 	
 	//header("location:../view/home.php?registro=".$message);
 
-	if ($message=='ok') {
-		echo '<script>alert("course successfully created");</script>';
-		echo '<script>window.location="../view/home.php"; </script>';
-		
-	}else{
-		echo '<script>alert("not create course");</script>';
-		echo '<script>window.location="../view/createCourse.php"; </script>';
-	}
+header("Location:../view/home.php?registro=".$mensaje);
 
 
 }
