@@ -1,6 +1,6 @@
 <?php
 require_once 'MatterDTO.php';
-require_once '../model/config.php';
+require_once 'config.php';
 class matterDAO{
 	private $sql="";
 	private $mensaje="";
@@ -61,20 +61,22 @@ public function createMatter(matterDTO $new){
 public function deleteSubject($idmaterias){
 		$this->sql="DELETE FROM materias WHERE idmaterias =?";
 		try {
-			$query = $this->conexion->prepare($this->sql);
-			$query->bindParam(1, $materias);
+			$query = $this->conect->prepare($this->sql);
+			$query->bindParam(1, $idmaterias);
+
+
 
 
 			if ($query->execute()) {
 			
-				$this->messagee="very good";
+				$this->mensaje="ok";
 			}else{
-				$this->messagee="error in the consulte";
+				$this->mensaje="error in the consulte";
 					}	
 		} catch (PDOException $e) {
-			$this->messagee="error".$e->getMessage();
+			$this->mensaje="error".$e->getMessage();
 		}
-		return $messagee;
+		return $mensaje;
 	}
 
 

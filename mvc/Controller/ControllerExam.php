@@ -1,31 +1,27 @@
+<?php
+include '../model/ExamDAO.php';
+include '../model/ExamDTO.php';
 
-
-<?php 
-require_once '../model/ExamDAO.php';
-require_once '../model/ExamDTO.php';
-$ExamDAO= new ExamDAO;
-$mensaje="";
+$ExamDAO = new ExamDAO;
+$message="";
 if (isset($_POST['addExam']) && $_POST['addExam']!=null) {
-	$newExam= new ExamDTO();
-	$newExam->set("nombreexamen", $_POST['nombreexamen']);
-	$newExam->set("descripcion", $_POST['descripcion']);
-	$newExam->set("fechainicio", $_POST['fechainicio']);
-	$newExam->set("fechafinal", $_POST['fechafinal']);
-
-	$mensaje=$ExamDAO->addExam($newExam);
+	$newExam = new ExamDTO();	
+	$newExam->set("nombreexamen", $_POST["nombreexamen"]);
+	$newExam->set("descripcion", $_POST["descripcion"]);
+	$newExam->set("fechainicio", $_POST["fechainicio"]);
+	$newExam->set("fechafinal", $_POST["fechafinal"]);
 	
-
-	header("Location:../view/home.php?registro=".$mensaje);
+	$message=$ExamDAO->addExam($newExam);
+	var_dump($message).die();
 }
 
 if (isset($_POST['deleteExam']) && $_POST['deleteExam']!=null) {
-	$idcurso = $_POST['idexamen'];
+	$idexamen = $_POST['idexamen'];
 	$message=$ExamDAO->deleteExam($idexamen);
-	header("location:../view/viewCourses.php?accion=".$message);
+	
 	
 
 }
-
 
 
  ?>

@@ -11,12 +11,12 @@
     
     <title>Mec</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="mvc/view/css/estilosUniversidad.css">
-    <link rel="stylesheet" href="mvc/view/css/bootstrap.css">
-    <link rel="icon" href="mvc/view/img/LogoUniversidades.ico">
+    <link rel="stylesheet" href="mvc/view/teacher/css/estilosUniversidad.css">
+    <link rel="stylesheet" href="mvc/view/teacher/css/bootstrap.css">
+    <link rel="icon" href="mvc/view/teacher/img/LogoUniversidades.ico">
     
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="mvc/view/js/bootstrap.min.js"></script>
+    <script src="mvc/view/teacher/js/bootstrap.min.js"></script>
 </head>
 <script>
     $().ready(function(){
@@ -33,7 +33,7 @@
 //            return;
 //        }
         ?>
-    <?php include 'mvc/view/includes/navexit.php' ?>
+    <?php include 'mvc/view/teacher/includes/navexit.php' ?>
 
 <div class="container">
 

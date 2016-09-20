@@ -10,7 +10,7 @@ if (isset($_POST['addQuestion']) && $_POST['addQuestion']!=null) {
 
 	$mensaje=$QuestionDAO->addQuestion($newQuestion);
 	
-	header("Location:../view/home.php?registro=".$mensaje);
+	header("Location:../view/teacher/home.php?registro=".$mensaje);
 }
 
 

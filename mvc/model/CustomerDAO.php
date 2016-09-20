@@ -1,5 +1,8 @@
 <?php
-	require_once 'config.php';
+
+require_once 'config.php';
+
+
 class CustomerDAO{
 	private $sql="";
 	private $outputMessage="";
@@ -49,6 +52,28 @@ class CustomerDAO{
 
 	public function registrarCliente(CustomerDTO $newCustomer){
 		$this->sql="INSERT INTO personas(documentoidentidad, nombres, apellidos, correoe, password, idrol, fechacreacion, estadopersona ) VALUES(?,?,?,?,?,1,now(),1)";
+		try {
+			$query = $this->conexion->prepare($this->sql);
+			$query->bindParam(1, $newCustomer->get("documentoidentidad"));
+			$query->bindParam(2, $newCustomer->get("nombres"));
+			$query->bindParam(3, $newCustomer->get("apellidos"));
+			$query->bindParam(4, $newCustomer->get("correoe"));
+			$query->bindParam(5, $newCustomer->get("password"));
+					
+			
+			if ($query->execute()) {
+				$this->outputMessage = 'ok';
+			}else{
+				$this->outputMessage = 'error en registro';
+			}
+		} catch (PDOException $e) {
+			$this->outputMessage='error en conexion'.$e->getMessage();
+		}
+		return $this->outputMessage;
+	}
+
+	public function addTeacher(CustomerDTO $newCustomer){
+		$this->sql="INSERT INTO personas(documentoidentidad, nombres, apellidos, correoe, password, idrol, fechacreacion, estadopersona ) VALUES(?,?,?,?,?,2,now(),1)";
 		try {
 			$query = $this->conexion->prepare($this->sql);
 			$query->bindParam(1, $newCustomer->get("documentoidentidad"));
@@ -128,7 +153,7 @@ class CustomerDAO{
 
 			if ($query->execute()) {
 			
-				$this->messagee="very good";
+				$this->messagee="ok";
 			}else{
 				$this->messagee="error in the consulte";
 					}	

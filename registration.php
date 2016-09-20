@@ -5,13 +5,14 @@
 	
 	<title>registration Mec</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="mvc/view/css/bootstrap.min.css">
-	<link rel="stylesheet" href="mvc/view/js/sweetalert.css">
-	<link rel="stylesheet" href="mvc/view/css/estilosUniversidad.css">
-	<link rel="icon" href="mvc/view/img/LogoUniversidades.ico">
+	<link rel="stylesheet" href="mvc/view/teacher/css/bootstrap.min.css">
+	<link rel="stylesheet" href="mvc/view/teacher/js/sweetalert.css">
+	<link rel="stylesheet" href="mvc/view/teacher/css/estilosUniversidad.css">
+	<link rel="icon" href="mvc/view/teacher/img/LogoUniversidades.ico">
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script src="mvc/view/js/bootstrap.min.js"></script>
-	<script src="mvc/view/js/sweetalert.min.js"></script>
+	<script src="mvc/view/teacher/js/bootstrap.min.js"></script>
+	<script src="mvc/view/teacher/js/sweetalert.min.js"></script>
+	<script src="mvc/view/teacher/js/createUser.js"></script>
 </head>
 <script>
 	$().ready(function(){
@@ -20,7 +21,7 @@
 
 </script>
 <body>
-<?php include 'mvc/view/includes/navexit.php' ?>
+<?php include 'mvc/view/teacher/includes/navexit.php' ?>
 
 	<div class="container center">
 		
@@ -31,7 +32,7 @@
 					<div class="panel-heading">
 						<span class="glyphicon glyphicon-lock"></span> registration</div>
 						<div class="panel-body">
-							<form action="mvc/Controller/services.php" method="post" role="form" class="col-md-9 go-right">
+							<form role="form" class="col-md-9 go-right">
 								<h4>form to registration to MEC </h4>
 								<div class="form-group">
 									<input type="number" id="documentoidentidad" name="documentoidentidad" class="form-control" required>

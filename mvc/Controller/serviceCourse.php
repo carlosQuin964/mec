@@ -14,7 +14,7 @@ if (isset($_POST['CreateCourse']) && $_POST['CreateCourse']!=null) {
 	
 	//header("location:../view/home.php?registro=".$message);
 
-header("Location:../view/home.php?registro=".$mensaje);
+//header("Location:../view/teacher/home.php?registro=".$mensaje);
 
 
 }
@@ -22,7 +22,7 @@ header("Location:../view/home.php?registro=".$mensaje);
 if (isset($_POST['deleteCourse']) && $_POST['deleteCourse']!=null) {
 	$idcurso = $_POST['idcurso'];
 	$message=$CustomerDAO->deleteCourse($idcurso);
-	header("location:../view/viewCourses.php?accion=".$message);
+	//header("location:../view/teacher/viewCourses.php?accion=".$message);
 	
 
 }

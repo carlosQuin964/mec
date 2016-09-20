@@ -11,13 +11,13 @@ if (isset($_POST['createMatter']) && $_POST['createMatter']!=null) {
 	$mensaje=$matterDAO->createMatter($newMatter);
 	
 	
-	header("Location:../view/home.php?registro=".$mensaje);
+	//header("Location:../view/home.php?registro=".$mensaje);
 }
 
 if (isset($_POST['deleteSubject']) && $_POST['deleteSubject']!=null) {
-	$idcurso = $_POST['idmaterias'];
-	$message=$matterDAO->deleteSubject($idmaterias);
-	header("location:../view/viewCourses.php?accion=".$message);
+	$idmaterias = $_POST['idmaterias'];
+	$mensaje=$matterDAO->deleteSubject($idmaterias);
+	header("location:../view/teacher/viewCourses.php?accion=".$mensaje);
 	
 
 }

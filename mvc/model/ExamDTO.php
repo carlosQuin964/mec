@@ -1,23 +1,21 @@
 <?php 
 class ExamDTO{
-  public $idexamen =0;
-  public $nombreexamen ="";
-  public $descripcion ="";
-  public $fechainicio ="";
-  public $fechafinal ="";
-  public $estadocurso ="";
+  public $idexamen;
+  public $nombreexamen;
+  public $descripcion;
+  public $fechainicio;
+  public $fechafinal;
+  public $estadocurso;
 
-public function set($campo,$valor){
-	$this->$campo=$valor;
+public function set ($fields, $value){
+$this->$fields = $value;
+}
+public function get ($fields){
+return $this->$fields;
 }
 
-public function get($campo){
-	return $this->$campo;
-}
-
 
 }
-
 
 
  ?>

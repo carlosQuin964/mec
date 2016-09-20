@@ -16,7 +16,7 @@ if (isset($_POST['registrarCliente']) && $_POST['registrarCliente']!=null ) {
 
 	$message=$CustomerDAO->registrarCliente($newCustomer); 
 	
-	header("Location:../view/home.php?registro=".$mensaje);
+	header("Location:../view/teacher/home.php?registro=".$mensaje);
 	}
 
 

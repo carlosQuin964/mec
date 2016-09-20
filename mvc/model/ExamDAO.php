@@ -1,73 +1,84 @@
-<?php 
-require_once '../model/config.php';
+<?php
+	require_once 'config.php';
+	//require_once 'ExamDTO.php';
 class ExamDAO{
+	private $sql="";
+	private $outputMessage="";
+	private $outputMessageCourse="";
+	private $conexion =null;
+	private $othermessage="";
+	private $messagee="";
 
-private $mensaje="";
-private $sql="";
-private $conect="";
 
-public function __construct(){
-	$this->conect=Database::connect();
-}
 
-public function addExam(ExamDTO	$add){
-$this->sql="INSERT INTO examenes( nombreexamen, descripcion, fechainicio, fechafinal, estadocurso) VALUES(?,?,?,?,1)";
-try {
-	$query= $this->conect->prepare($this->sql);
-	$query->bindParam(1, $add->get("nombreexamen"));
-	$query->bindParam(2, $add->get("descripcion"));
-	$query->bindParam(3, $add->get("fechainicio"));
-	$query->bindParam(4, $add->get("fechafinal"));
-	if ($query->execute()) {
-		$this->mensaje='ok';
+	 function __construct(){		
+		$this->conexion=Database::connect();	
+	}
+	
+	public function readExam(){
+		$this->sql="SELECT * FROM examenes";
+		try {
+			$query = $this->conexion->prepare($this->sql);
+			if($query->execute()){
+				$arrayExit = $query->fetchALL(PDO::FETCH_ASSOC);	
+				$allCustomer= array();
+				foreach ($arrayExit as $Exam) {
+					$Exame = new ExamDTO();
+					$Exame->set("idexamen", $Exam["idexamen"]);
+				$Exame->set("nombreexamen", $Exam["nombreexamen"]);
+					$Exame->set("descripcion", $Exam["descripcion"]);
+					$Exame->set("fechainicio", $Exam["fechainicio"]);
+					$Exame->set("fechafinal", $Exam["fechafinal"]);
+					$Exame->set("estadocurso", $Exam["estadocurso"]);
+										
+					$allExam[]=$Exame;
+				}				
+			}else{
+				$this->outputMessage='Error in the sql expression';
+			}
+		} catch (PDOException $e) {
+			$this->outputMessage= "error in the connection : " .$e->getMessage();
+		}
+		return $allExam;
+	}
 
-	}else{
-		$this->mensaje='error create Exam';
+	
+
+	public function addExam(ExamDTO $newExam){
+		$this->sql="INSERT INTO examenes(nombreexamen, descripcion, fechainicio, fechafinal, estadocurso ) VALUES(?,?,?,?,1)";
+		try {
+			$query = $this->conexion->prepare($this->sql);
+			
+			$query->bindParam(1, $newExam->get("nombreexamen"));
+			$query->bindParam(2, $newExam->get("descripcion"));
+			$query->bindParam(3, $newExam->get("fechainicio"));
+			$query->bindParam(4, $newExam->get("fechafinal"));
+			
+
+			if ($query->execute()) {
+			$this->outputMessageCourse = 'ok';
+			}else{
+				$this->outputMessageCourse = 'bad';
+			}
+		} catch (PDOException $e) {
+			$this->outputMessageCourse='error in connect crear'.$e->getMessage();
+		}
+		return $this->outputMessageCourse;
 	}
 
 
-} catch (PDOException $e) {
-	$this->mensaje="error en la conecion".$e->getMessage();
-}
-return $this->mensaje;
-}
-public function readExam(){
-	$this->sql="SELECT idexamen, nombreexamen, descripcion, fechainicio, fechafinal, estadocurso FROM examenes";
-	try {
-		$query=$this->conect->prepare($this->sql);
-		if ($query->execute()) {
-		$arrayExit = $query->fetchALL(PDO::FETCH_ASSOC);
-		$allExam=array();
-		foreach ($arrayExit as $exame ) {
-		$exam= new ExamDTO();
-		$exam->set("idexamen", $exame["idexamen"]);
-		$exam->set("nombreexamen", $exame["nombreexamen"]);
-		$exam->set("descripcion", $exame["descripcion"]);
-		$exam->set("fechainicio", $exame["fechainicio"]);
-		$exam->set("fechafinal", $exame["fechafinal"]);
-		$allExam[]=$exam;
-		}
-		}else{
-			$this->mensaje="erro in  sql";
+	
 
-		}
-	} catch (PDOException $e) {
-		$this->mensaje="error in connect".$e->getMessage();
-		
-	}
-	return $allExam;
-}
-
-public function deleteExam($idexamen){
+	public function deleteExam($idexamen){
 		$this->sql="DELETE FROM examenes WHERE idexamen =?";
 		try {
 			$query = $this->conexion->prepare($this->sql);
-			$query->bindParam(1, $examenes);
+			$query->bindParam(1, $idexamen);
 
 
 			if ($query->execute()) {
 			
-				$this->messagee="very good";
+				$this->messagee="ok";
 			}else{
 				$this->messagee="error in the consulte";
 					}	
@@ -77,7 +88,8 @@ public function deleteExam($idexamen){
 		return $messagee;
 	}
 
-
 }
 
- ?>
+	
+
+?>

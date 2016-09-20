@@ -15,12 +15,20 @@ if (isset($_POST['nick'])) {
     $usuario = $nuevoSingleton->validarUsuario($nick, $password);
 
 
-    if ($usuario == TRUE) {
+    if ($usuario == TRUE && $_SESSION['idrol']== 2) {
        
-       header('location:mvc\view/home.php'); 
+       header('location:mvc\view/teacher/home.php'); 
        
         
-    }  else {
+    }else if ($usuario == TRUE && $_SESSION['idrol']== 1){
+
+        header('location:mvc/view/student/Ehome.php'); 
+
+     }else if ($usuario == TRUE && $_SESSION['idrol']== 3){
+
+        header('location:mvc/view/Admin/Ahome.php'); 
+
+     }else {
         echo '<script> alert("Username or password incorrect");</script>';    
         echo '<script>window.location="login.php"; </script>';    
     }

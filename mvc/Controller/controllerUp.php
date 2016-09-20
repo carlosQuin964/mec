@@ -16,8 +16,11 @@ if (isset($_POST['updateCustomer'])&& $_POST['updateCustomer']!=null) {
 	$newUpdate->set("estadoPersona", $_POST['estadoPersona']);
 	$mensaje=$CustomerU->updateCustomer($newUpdate);
 	
+	if ($mensaje=="ok") {
+		echo "<script> alert('update oK');</script>";
+		echo "<script> window.location='../view/teacher/home.php'</script>";
+	}
 	
-	header("Location:../view/home.php?registro=".$mensaje);
          
 
 }

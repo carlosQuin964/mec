@@ -1,4 +1,5 @@
 <?php
+
 class questionDTO{
   public $idenunciado=0; 
   public $enunciado=""; 
